@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import { Contact } from "./views/contacts";
+import { ContactList } from "./views/ContactList.jsx";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
@@ -25,8 +25,8 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/contact">
-							<Contact />
+						<Route exact path="/contact-list">
+							<ContactList />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />

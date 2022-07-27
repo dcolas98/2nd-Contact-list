@@ -1,53 +1,107 @@
-import React, {useState, useContext} from "react";
-import { Link, useHistory } from "react-router-dom";
-import {Context} from "../store/appContext"
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
+import React, { useContext, useState } from "react";
+import "../../styles/home.css";
+import { Context } from "../store/appContext.js";
+import {Link,useHistory,} from "react-router-dom"
 export const Home = () => {
-	const {store, actions} = useContext(Context)
-	const [contact, setContact] = useState({
-		full_name: "",
-		email: "",
-		address: "",
-		phone: "",
-		agenda_slug: "class_agenda",
-	})
-	console.log(contact)
+  let history=useHistory();
+  const { store, actions } = useContext(Context);
+  const [contact, setContact] = useState({
+    full_name: "",
+    address: "",
+    phone: "",
+    email: "",
+  });
+  console.log(contact)
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      actions.addContact(contact)
+      history.push(`/`);
+  }
+  return (
+    <form onSubmit={ handleSubmit}>
+      <h1 className="title">Add a new contact</h1>
+      <section>
+        <div>Full Name</div>
+        <input
 
-	let history = useHistory()
-	return (
-		<form>
-			<h1 className='title' >Add a New Contact </h1>
-			<div className='bigDiv'>
-				<div class="form-group mb-3">
-					<label for="exampleFormControlInput1">Email address:</label>
-					<input type="text" onChange={(event)=> setContact({...contact, email: event.target.value})} class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-				</div>
-				<div class="form-group mb-3">
-					<label for="exampleFormControlInput1">Full Name:</label>
-					<input type="text" onChange={(event)=> setContact({...contact, full_name: event.target.value})} class="form-control" id="exampleFormControlInput1" placeholder="John Doe"/>
-				</div>
-				<div class="form-group mb-3">
-					<label for="exampleFormControlInput1">Phone Number:</label>
-					<input type="text" onChange={(event)=> setContact({...contact, phone: event.target.value})} class="form-control" id="exampleFormControlInput1" placeholder="(XXX)XXX-XXXX"/>
-				</div>
-				<div class="form-group mb-3">
-					<label for="exampleFormControlInput1">Address:</label>
-					<input type="text" onChange={(event)=> setContact({...contact, address: event.target.value})} class="form-control" id="exampleFormControlInput1" placeholder="123 N Appleseed Ln, Miami, FL 33147 "/>
-				</div>
-				<div class="form-group form-check">
-				</div>
-				<button type="submit" onClick={()=> {
-						actions.createContact(contact)
-						// history.push("/")
-					}} class="butt btn btn-primary">Submit</button>
-				<div class= "btc">
-				<Link to="/contact">Back to Contacts</Link>
-				</div>
-			</div>
-		</form>
-	);
+          type="text"
+          value={contact.full_name}
+          className="form-control"
+          placeholder=""
+          aria-label="Example text with button addon"
+          aria-describedby="button-addon1"
+          onChange={(event)=>{
+            setContact({...contact,full_name:event.target.value})
+          }}
+          
+        ></input>
+      </section>
+      <section>
+        <div>Email</div>
+        <input
+          type="text"
+          value={contact.email}
+          className="form-control"
+          placeholder=""
+          aria-label="Example text with button addon"
+          aria-describedby="button-addon1"
+          onChange={(event)=>{
+            setContact({...contact,email:event.target.value})
+          }}
+    
+          
+        ></input>
+      </section>
+      <section>
+        <div>Phone Number</div>
+        <input
+          type="text"
+          value={contact.phone}
+          className="form-control"
+          placeholder=""
+          aria-label="Example text with button addon"
+          aria-describedby="button-addon1"
+          onChange={(event)=>{
+            setContact({...contact,phone:event.target.value})
+          }}
+        
+        ></input>
+      </section>
+      <section className="bottom">
+        <div>Address</div>
+        <input
+          type="text"
+          value={contact.address}
+          className="form-control"
+          placeholder=""
+          aria-label="Example text with button addon"
+          aria-describedby="button-addon1"
+          onChange={(event)=>{
+            setContact({...contact,address:event.target.value})
+          }}
+         
+        ></input>
+      </section>
+
+      <button 
+      onClick={(event)=>{
+        if(contact!=="") {
+          event.preventDefault();
+          actions.addContact(contact)
+          history.push(`/`);
+
+           }
+           
+         
+
+      }}
+      className="btn btn-primary m-2 col-12 m-auto" type="button">
+        save
+      </button>
+      <Link to="https://3000-4geeksacade-reacthellow-w2hzmjdp7yt.ws-us54.gitpod.io/contact" href="#" className="mx-2 link-primary">
+          or get back to contacts{" "}
+        </Link>
+    </form>
+  );
 };
+

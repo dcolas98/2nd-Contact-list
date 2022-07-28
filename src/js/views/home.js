@@ -98,7 +98,7 @@ export const Home = () => {
       className="btn btn-primary m-2 col-12 m-auto" type="button">
         save
       </button>
-      <Link to="https://3000-4geeksacade-reacthellow-w2hzmjdp7yt.ws-us54.gitpod.io/contact" href="#" className="mx-2 link-primary">
+      <Link to="https://3000-4geeksacade-reacthellow-w2hzmjdp7yt.ws-us54.gitpod.io/contact-list" href="#" className="mx-2 link-primary">
           or get back to contacts{" "}
         </Link>
     </form>

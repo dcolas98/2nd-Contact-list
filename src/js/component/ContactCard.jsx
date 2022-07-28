@@ -15,8 +15,8 @@ export const ContactCard = (props) => {
         {props.contact.email}
       </div>
       <div className="icons">
-          <span><i class="fa-solid fa-user-pen"></i></span>
-          <span><i class="fa-solid fa-trash"></i></span>
+          <button className="trash"><i class="fa-solid fa-user-pen"></i></button>
+          <button className="edit"><i class="fa-solid fa-trash"></i></button>
       </div>
     </div>
   );

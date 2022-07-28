@@ -21,6 +21,18 @@ const getState = ({
 					}))
 					.catch(err => console.log(err))
 			},
+			delContact: (id) => {
+				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, {
+					method: 'DELETE',
+					headers: {
+						"Content-Type": "application/json"
+					},
+				})
+				.then(response => {
+					response.status === 200 ? getActions().getData():"";
+				})
+
+			},
 
 			addContact: ({full_name, email, address, phone}) => {
 				fetch("https://assets.breatheco.de/apis/fake/contact/", {

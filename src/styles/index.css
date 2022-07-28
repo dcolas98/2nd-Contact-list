@@ -3,8 +3,8 @@
 */
 .pic{
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 180px;
+    width: 180px;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -19,8 +19,8 @@
     margin: 30px;
 }
 .icons{
-    margin-right: 20px;
-    margin-top: 10px;
+    margin-left: 430px;
+    margin-top: -30px;
 }
 .edit{
     margin-left: 10px;

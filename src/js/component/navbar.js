@@ -5,7 +5,11 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 justify-content-end">
 			<div>
-				<button className="btn btn-success justify-content-end">Add New Contact</button>
+				<Link to="/add">
+					<button className="btn btn-success justify-content-end">
+						Add a new contact
+					</button>
+				</Link>			
 			</div>
 		</nav>
 	);

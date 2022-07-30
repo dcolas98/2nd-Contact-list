@@ -2,13 +2,14 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { ContactList } from "./views/ContactList.jsx";
-import { Home } from "./views/home";
+import { Add } from "./views/Add.jsx";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import Edit from "./views/Edit.jsx";
 
 //create your first component
 const Layout = () => {
@@ -23,10 +24,13 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<Home />
+						<ContactList />
 						</Route>
-						<Route exact path="/contact-list">
-							<ContactList />
+						<Route exact path="/add">
+						<Add />
+						</Route>
+						<Route exact path="/edit/:id">
+						<Edit />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />

@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext.js";
 import {Link,useHistory,} from "react-router-dom"
-export const Home = () => {
+
+export const Add = () => {
   let history=useHistory();
   const { store, actions } = useContext(Context);
   const [contact, setContact] = useState({
@@ -89,16 +90,12 @@ export const Home = () => {
           event.preventDefault();
           actions.addContact(contact)
           history.push(`/`);
-
            }
-           
-         
-
       }}
       className="btn btn-primary m-2 col-12 m-auto" type="button">
         save
       </button>
-      <Link to="/contact-list" href="#" className="mx-2 link-primary">
+      <Link to="/" className="mx-2 link-primary">
           or get back to contacts{" "}
         </Link>
     </form>

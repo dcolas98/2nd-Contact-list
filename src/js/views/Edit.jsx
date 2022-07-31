@@ -1,9 +1,24 @@
-import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, {useState, useContext, useEffect} from 'react'
+import { Link, useParams, useHistory } from 'react-router-dom'
+import { Context } from "../store/appContext";
 
-const Edit = () => {
+const Edit = (props) => {
     let { id } = useParams();
-    
+    const { store, actions } = useContext(Context);
+    const [contact, setContact] = useState({
+        full_name: "",
+        address: "",
+        phone: "",
+        email: "",
+        agenda_slug: "class_agenda",
+    });
+    const myContact = store.data && store.data.filter((contact)=> contact.id === id)[0]
+    useEffect(()=> {
+        if(myContact){
+            setContact(myContact)
+        }    
+    },[myContact])
+    const history = useHistory()
     return (
         <div>
             <div>
@@ -15,7 +30,7 @@ const Edit = () => {
                     <input
 
                         type="text"
-                        value={id.full_name}
+                        value={contact.full_name}
                         className="form-control"
                         placeholder=""
                         aria-label="Example text with button addon"
@@ -30,7 +45,7 @@ const Edit = () => {
                     <div>Email</div>
                     <input
                         type="text"
-                        value={id.email}
+                        value={contact.email}
                         className="form-control"
                         placeholder=""
                         aria-label="Example text with button addon"
@@ -46,7 +61,7 @@ const Edit = () => {
                     <div>Phone Number</div>
                     <input
                         type="text"
-                        value={id.phone}
+                        value={contact.phone}
                         className="form-control"
                         placeholder=""
                         aria-label="Example text with button addon"
@@ -61,7 +76,7 @@ const Edit = () => {
                     <div>Address</div>
                     <input
                         type="text"
-                        value={id.address}
+                        value={contact.address}
                         className="form-control"
                         placeholder=""
                         aria-label="Example text with button addon"
@@ -72,6 +87,13 @@ const Edit = () => {
 
                     ></input>
                 </section>
+                <button onClick={()=> {
+                    if(contact !== ""){
+                        actions.editContact(contact)
+                        history.push("/")
+                    }
+                    }}> Submit </button>
+
             </div>
         </div>
     )
